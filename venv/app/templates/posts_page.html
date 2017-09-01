@@ -1,0 +1,13 @@
+{% extends "layout_page.html" %}
+{% set active = 'posts' %}
+{% block main_container %}
+	{% for post in data %}
+		<ul>
+			<li>
+				<p>Title: {{ post.title }}</p>
+				<p>Content: {{ post.content }}</p>
+				<p>Posted By: {{ post.users.name }}</p>
+			</li>
+		</ul>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to App Flask</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/circular-font.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper purple darken-4">
+			<a href="/" class="brand-logo">Flask App</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			{% set nav_bar = [
+				('/', 'index', 'Index'),
+				('/login', 'login', 'Login'),
+				('/signup', 'signup', 'Signup'),
+				('/posts', 'posts', 'Posts'),
+			]-%}
+			{% set active = active|default('index') -%}
+			<ul class="right hide-on-med-and-down">
+			{% for href, id, text in nav_bar %}
+				<li{% if id == active %} class="active" {% endif %}><a href="{{ href|e }}">{{ text|e }}</a></li>
+			{% endfor %}
+			</ul>
+			<ul class="side-nav" id="mobile-demo">
+			{% for href, id, text in nav_bar %}
+				<li{% if id == active %} class="active" {% endif %}><a href="{{ href|e }}">{{ text|e }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</nav> 
+	{% block main_container %}{% endblock %}
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+	<script type=text/javascript>
+		$(".button-collapse").sideNav();
+	</script>
+</body>
+</html>

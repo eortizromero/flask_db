@@ -1,0 +1,25 @@
+{% extends "layout_page.html "%}
+{% set active = 'index' %}
+{% block main_container %}
+	<div class="row">
+		<div class="col s12">
+			<h4>Active Users</h4>
+			{% for user in users %}
+			<ul>
+				<li>{{ user.name }}</li>
+			</ul>
+			{% endfor %}	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<h4>Latest Post</h4>
+			{% for post in posts %}
+			<ul>
+				<li>{{ post.title }}</li>
+				<li>{{ post.content }}</li>
+			</ul>
+			{% endfor %}	
+		</div>
+	</div>
+{% endblock %}
